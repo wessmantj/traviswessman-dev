@@ -93,6 +93,7 @@
     max-width: none;
     margin: 0;
     padding: 0;
+    height: calc(100vh - 48px);
     min-height: calc(100vh - 48px);
     position: relative;
     overflow: hidden;
@@ -566,13 +567,108 @@
 
   .project-link:hover { opacity: 0.65; }
 
+  /* ---- CLIENTS ---- */
+  .client-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .client {
+    padding: 2rem 2rem 2rem 0;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .client:nth-child(even) {
+    padding-left: 2rem;
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .client:nth-last-child(-n+2) { border-bottom: none; }
+
+  .client-status {
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--body);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .client-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: var(--text);
+  }
+
+  .client-industry {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    color: var(--body);
+    margin-bottom: 0.8rem;
+  }
+
+  .client-services {
+    list-style: none;
+    font-size: 0.88rem;
+    color: var(--body);
+    line-height: 2;
+    font-family: var(--serif);
+    font-weight: 300;
+  }
+
+  /* ---- SMS POLICY ---- */
+  .policy { max-width: 600px; }
+
+  .policy-block { margin-bottom: 2rem; }
+
+  .policy-block h3 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .policy-block p, .policy-block li {
+    font-size: 0.92rem;
+    color: var(--body);
+    line-height: 1.75;
+  }
+
+  .policy-block ul { list-style: none; margin-top: 0.3rem; }
+
+  .policy-block ul li { padding-left: 1rem; position: relative; }
+  .policy-block ul li::before { content: "4"; position: absolute; left: 0; color: var(--rule); }
+
+  /* ---- LINK ITEM ---- */
+  .link-item {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .link-item:hover { color: var(--text); border-color: var(--text); }
+
   /* ---- RESPONSIVE ---- */
   @media (max-width: 640px) {
     nav { padding: 0 1.2rem; }
     .nav-links { gap: 1.2rem; }
     .nav-links a { font-size: 0.6rem; letter-spacing: 0.09em; }
     section { padding: 3rem 1.5rem 4rem; }
-    #home { min-height: calc(100svh - 48px); }
+    #home { height: calc(100svh - 48px); min-height: calc(100svh - 48px); }
     .hero-content { padding: 0 1.5rem 3rem; min-height: calc(100svh - 48px); }
     .hero-name { font-size: clamp(2.4rem, 10vw, 3.5rem); }
     .hero-tagline { font-size: 0.62rem; letter-spacing: 0.14em; }
@@ -581,6 +677,7 @@
     footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.2rem; }
     .btn-resume-nav { display: none; }
     .project-photos { grid-template-columns: 1fr; }
+    .client-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -592,6 +689,7 @@
     <ul class="nav-links">
       <li><a onclick="show('about'); return false;" href="#" id="nav-about">About</a></li>
       <li><a onclick="show('projects'); return false;" href="#" id="nav-projects">Projects</a></li>
+      <li><a onclick="show('clients'); return false;" href="#" id="nav-clients">Clients</a></li>
       <li><a onclick="show('contact'); return false;" href="#" id="nav-contact">Contact</a></li>
     </ul>
     <a href="053026_Resume.pdf" download class="btn-resume btn-resume-nav">Resume</a>
@@ -617,6 +715,7 @@
       <div class="hero-nav">
         <a onclick="show('about'); return false;" href="#">About</a>
         <a onclick="show('projects'); return false;" href="#">Projects</a>
+        <a onclick="show('clients'); return false;" href="#">Clients</a>
         <a onclick="show('contact'); return false;" href="#">Contact</a>
       </div>
     </div>
@@ -768,6 +867,40 @@
     </div>
   </section>
 
+  <!-- CLIENTS -->
+  <section id="clients">
+    <h1>Wessman Systems</h1>
+
+    <div class="client-row">
+      <div class="client">
+        <span class="client-status">Active</span>
+        <div class="client-name">Alternative Heating Solutions</div>
+        <div class="client-industry">HVAC &nbsp;&middot;&nbsp; Massachusetts</div>
+      </div>
+      <div class="client">
+        <span class="client-status">Open</span>
+        <div class="client-name">Your Business</div>
+        <div class="client-industry">Available slot</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p style="margin-bottom:1.5rem;">Wessman Systems handles missed calls automatically &mdash; every missed call gets a text back, every lead gets logged.</p>
+
+    <div class="entry-body">
+      <ul>
+        <li>Automatic SMS reply to every missed call</li>
+        <li>Instant notification to the business owner</li>
+        <li>Every caller logged to a dashboard</li>
+      </ul>
+    </div>
+
+    <hr>
+    <p style="margin-bottom:1.2rem;">Interested in working together?</p>
+    <a class="link-item" onclick="show('contact'); return false;" href="#">Get in touch</a>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <h1>Contact</h1>
@@ -795,6 +928,47 @@
     </div>
   </section>
 
+
+  <!-- SMS POLICY -->
+  <section id="sms">
+    <h1>SMS Policy</h1>
+    <p style="margin-bottom:2.5rem;">This policy governs SMS communications sent by businesses using services provided by traviswessman.dev.</p>
+
+    <div class="policy">
+      <div class="policy-block">
+        <h3>Service Description</h3>
+        <p>Messages are sent by or on behalf of businesses that have engaged traviswessman.dev for communication services. Uses include missed call notifications, appointment confirmations, and service-related updates. Standard message and data rates may apply.</p>
+      </div>
+      <hr>
+      <div class="policy-block">
+        <h3>Consent &amp; Opt-In</h3>
+        <p>By providing your phone number to a business using our SMS services, you consent to receive text messages from that business. Consent is not a condition of purchase. Message frequency varies by business.</p>
+      </div>
+      <hr>
+      <div class="policy-block">
+        <h3>Opt-Out</h3>
+        <p>Reply <strong>STOP</strong> to any message to opt out. You will receive one final confirmation message, then no further messages unless you opt back in by replying <strong>START</strong>.</p>
+      </div>
+      <hr>
+      <div class="policy-block">
+        <h3>Help &amp; Support</h3>
+        <p>Reply <strong>HELP</strong> to any message, or contact:</p>
+        <p style="margin-top:0.4rem;"><a href="mailto:contact@traviswessman.dev" style="color:var(--text);">contact@traviswessman.dev</a></p>
+      </div>
+      <hr>
+      <div class="policy-block">
+        <h3>Privacy</h3>
+        <p>Phone numbers are not sold or shared with third parties for marketing. They are used solely for the described communication services.</p>
+      </div>
+      <hr>
+      <div class="policy-block">
+        <h3>Rates &amp; Delivery</h3>
+        <p>For missed call auto-responses: one (1) message per missed call, sent once per caller per session. Frequency varies by business. Message and data rates may apply, and carriers are not liable for delayed or undelivered messages.</p>
+      </div>
+      <p style="font-family:var(--sans); font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--body); margin-top:2rem;">Last updated June 2026 &nbsp;&middot;&nbsp; traviswessman.dev</p>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -809,11 +983,11 @@
       </a>
     </div>
   </div>
-  <span>Massachusetts &middot; UMass Dartmouth</span>
+  <a onclick="show('sms'); return false;" href="#" id="nav-sms" style="font-family:var(--sans); font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--body); text-decoration:none; cursor:pointer;">SMS Policy</a>
 </footer>
 
 <script>
-  var sections = ['home', 'about', 'projects', 'contact'];
+  var sections = ['home', 'about', 'projects', 'clients', 'contact', 'sms'];
 
   function show(id) {
     sections.forEach(function(s) {
@@ -830,7 +1004,7 @@
   });
 
   // Scroll-triggered heading animation
-  var animHeadings = document.querySelectorAll('#about h1, #about h2, #projects h1, #contact h1');
+  var animHeadings = document.querySelectorAll('#about h1, #about h2, #projects h1, #clients h1, #contact h1, #sms h1');
   animHeadings.forEach(function(h) { h.classList.add('heading-hidden'); });
 
   var headingObserver = new IntersectionObserver(function(entries) {
